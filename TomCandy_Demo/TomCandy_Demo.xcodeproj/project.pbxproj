@@ -14,6 +14,9 @@
 		84E527991C04CC5F00F9B8C7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84E527971C04CC5F00F9B8C7 /* Main.storyboard */; };
 		84E5279B1C04CC5F00F9B8C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84E5279A1C04CC5F00F9B8C7 /* Assets.xcassets */; };
 		84E5279E1C04CC5F00F9B8C7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84E5279C1C04CC5F00F9B8C7 /* LaunchScreen.storyboard */; };
+		84E527A61C04CDD200F9B8C7 /* Sprites.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 84E527A51C04CDD200F9B8C7 /* Sprites.atlas */; };
+		84E527A81C04D21D00F9B8C7 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84E527A71C04D21D00F9B8C7 /* SpriteKit.framework */; };
+		84E527AB1C04D2D500F9B8C7 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E527AA1C04D2D500F9B8C7 /* GameScene.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +31,10 @@
 		84E5279A1C04CC5F00F9B8C7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		84E5279D1C04CC5F00F9B8C7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		84E5279F1C04CC5F00F9B8C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		84E527A51C04CDD200F9B8C7 /* Sprites.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Sprites.atlas; sourceTree = "<group>"; };
+		84E527A71C04D21D00F9B8C7 /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
+		84E527A91C04D2D500F9B8C7 /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameScene.h; path = ../GameScene.h; sourceTree = "<group>"; };
+		84E527AA1C04D2D500F9B8C7 /* GameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameScene.m; path = ../GameScene.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +42,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84E527A81C04D21D00F9B8C7 /* SpriteKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +52,7 @@
 		84E527801C04CC5F00F9B8C7 = {
 			isa = PBXGroup;
 			children = (
+				84E527A71C04D21D00F9B8C7 /* SpriteKit.framework */,
 				84E5278B1C04CC5F00F9B8C7 /* TomCandy_Demo */,
 				84E5278A1C04CC5F00F9B8C7 /* Products */,
 			);
@@ -60,11 +69,14 @@
 		84E5278B1C04CC5F00F9B8C7 /* TomCandy_Demo */ = {
 			isa = PBXGroup;
 			children = (
+				84E527A51C04CDD200F9B8C7 /* Sprites.atlas */,
 				84E5278F1C04CC5F00F9B8C7 /* AppDelegate.h */,
 				84E527901C04CC5F00F9B8C7 /* AppDelegate.m */,
 				84E527921C04CC5F00F9B8C7 /* art.scnassets */,
 				84E527941C04CC5F00F9B8C7 /* GameViewController.h */,
 				84E527951C04CC5F00F9B8C7 /* GameViewController.m */,
+				84E527A91C04D2D500F9B8C7 /* GameScene.h */,
+				84E527AA1C04D2D500F9B8C7 /* GameScene.m */,
 				84E527971C04CC5F00F9B8C7 /* Main.storyboard */,
 				84E5279A1C04CC5F00F9B8C7 /* Assets.xcassets */,
 				84E5279C1C04CC5F00F9B8C7 /* LaunchScreen.storyboard */,
@@ -143,6 +155,7 @@
 				84E5279E1C04CC5F00F9B8C7 /* LaunchScreen.storyboard in Resources */,
 				84E5279B1C04CC5F00F9B8C7 /* Assets.xcassets in Resources */,
 				84E527991C04CC5F00F9B8C7 /* Main.storyboard in Resources */,
+				84E527A61C04CDD200F9B8C7 /* Sprites.atlas in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -155,6 +168,7 @@
 			files = (
 				84E527911C04CC5F00F9B8C7 /* AppDelegate.m in Sources */,
 				84E527961C04CC5F00F9B8C7 /* GameViewController.m in Sources */,
+				84E527AB1C04D2D500F9B8C7 /* GameScene.m in Sources */,
 				84E5278E1C04CC5F00F9B8C7 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
