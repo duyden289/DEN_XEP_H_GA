@@ -8,6 +8,13 @@
 
 #import <SpriteKit/SpriteKit.h>
 
+
+@class TomLevel;
+
 @interface GameScene : SKScene
+
+@property (nonatomic, strong) TomLevel *level;
+
+- (void)addSpriteForTom: (NSSet *)toms;
 
 @end

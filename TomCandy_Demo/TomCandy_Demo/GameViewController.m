@@ -8,10 +8,13 @@
 
 #import "GameViewController.h"
 #import "GameScene.h"
+#import "TomLevel.h"
+
 
 @interface GameViewController ()
 
 @property (nonatomic, strong) GameScene *gameScene;
+@property (nonatomic, strong) TomLevel *level;
 
 @end
 
@@ -29,11 +32,27 @@
     self.gameScene = [GameScene sceneWithSize:skView.bounds.size];
     self.gameScene.scaleMode = SKSceneScaleModeAspectFill;
     
+    // Load the Tom level
+    self.level = [[TomLevel alloc] init];
+    self.gameScene.level = self.level;
+    
     // Present the scene
     [skView presentScene:self.gameScene];
     
+    // Let's start begin game
+    [self beginGame];
 }
 
+- (void)shuffle
+{
+    NSSet *newToms = [self.level shuffle];
+    [self.gameScene addSpriteForTom:newToms];
+}
+
+- (void)beginGame
+{
+    [self shuffle];
+}
 
 - (BOOL)shouldAutorotate
 {
@@ -53,10 +72,5 @@
     }
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Release any cached data, images, etc that aren't in use.
-}
 
 @end
