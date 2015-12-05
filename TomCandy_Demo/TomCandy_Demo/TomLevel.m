@@ -51,15 +51,22 @@
         
         for (NSInteger column = 0; column < NumColumns; column ++) {
             
-            //2
-            
-            NSUInteger tomType = arc4random_uniform(NumTomTypes) + 1;
-            
-            //3
-            TomCandy *tom = [self createTomAtColumn:column row:row withType:tomType];
-            
-            //4
-            [set addObject:tom];
+            if (_title[column][row] != nil) {
+                
+                NSUInteger tomType;
+                //2
+                
+                do
+                {
+                    tomType = arc4random_uniform(NumTomTypes) + 1;
+                }
+                while ((column >= 2 && _tom[column - 1][row].tomType == tomType && _tom[column - 2][row].tomType == tomType) || (row >= 2 && _tom[column][row - 1].tomType == tomType && _tom[column][row - 2].tomType == tomType));
+                //3
+                TomCandy *tom = [self createTomAtColumn:column row:row withType:tomType];
+                
+                //4
+                [set addObject:tom];
+            }
             
         }
     }
