@@ -43,14 +43,16 @@ static const CGFloat TileWight = 36.0;
         
         CGPoint layerPosition = CGPointMake(-TileWight *NumColumns / 2, -TileHeight *NumRows / 2);
         
+        self.titleLayer = [SKNode node];
+        self.titleLayer.position = layerPosition;
+        [self.gameLayer addChild:self.titleLayer];
+
+        
         self.tomLayer = [SKNode node];
         self.tomLayer.position = layerPosition;
         
         [self.gameLayer addChild:self.tomLayer];
         
-        self.titleLayer = [SKNode node];
-        self.titleLayer.position = layerPosition;
-        [self.gameLayer addChild:self.titleLayer];
         
     }
     return self;
