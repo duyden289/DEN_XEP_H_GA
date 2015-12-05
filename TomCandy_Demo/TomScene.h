@@ -22,4 +22,5 @@
 @property (nonatomic, copy) void(^swiperHandler)(TomSwap *tomSwap);
 
 - (void)animateTomSwap:(TomSwap *)tomSwap completion:(dispatch_block_t)completion;
+- (void)animateInvalidTomSwap: (TomSwap *)tomSwap completion:(dispatch_block_t)completion;
 @end

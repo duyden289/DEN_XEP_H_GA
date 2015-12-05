@@ -52,7 +52,10 @@
         }
         else
         {
-            self.view.userInteractionEnabled = YES;
+            [self.tomScene animateInvalidTomSwap:tomSwap completion:^{
+                
+                self.view.userInteractionEnabled = YES;
+            }];
         }
     };
     

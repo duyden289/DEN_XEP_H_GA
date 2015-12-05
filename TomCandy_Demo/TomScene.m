@@ -253,25 +253,7 @@ static const CGFloat TileWight = 36.0;
     NSLog(@"Touch Cancel");
 }
 
-- (void)animateTomSwap:(TomSwap *)tomSwap completion:(dispatch_block_t)completion
-{
-    // Put the tom candy you started with o top
-    tomSwap.tomCandyA.sprite.zPosition = 100;
-    tomSwap.tomCandyB.sprite.zPosition = 90;
-    
-    const NSTimeInterval duration = 0.3;
-    
-    SKAction *moveTomA = [SKAction moveTo:tomSwap.tomCandyB.sprite.position duration:duration];
-    moveTomA.timingMode = SKActionTimingEaseOut;
-    
-    [tomSwap.tomCandyA.sprite runAction:[SKAction sequence:@[moveTomA, [SKAction runBlock:completion]]]];
-    
-    SKAction *moveTomB = [SKAction moveTo:tomSwap.tomCandyA.sprite.position duration:duration];
-    moveTomB.timingMode = SKActionTimingEaseOut;
-    
-    [tomSwap.tomCandyB.sprite runAction:moveTomB];
-    
-}
+
 
 /**
  *  Highlight for image
@@ -301,4 +283,41 @@ static const CGFloat TileWight = 36.0;
     [self.selectionSprite runAction:[SKAction sequence:@[[SKAction fadeOutWithDuration:0.3], [SKAction removeFromParent]]]];
 }
 
+- (void)animateTomSwap:(TomSwap *)tomSwap completion:(dispatch_block_t)completion
+{
+    // Put the tom candy you started with o top
+    tomSwap.tomCandyA.sprite.zPosition = 100;
+    tomSwap.tomCandyB.sprite.zPosition = 90;
+    
+    const NSTimeInterval duration = 0.3;
+    
+    SKAction *moveTomA = [SKAction moveTo:tomSwap.tomCandyB.sprite.position duration:duration];
+    moveTomA.timingMode = SKActionTimingEaseOut;
+    
+    SKAction *moveTomB = [SKAction moveTo:tomSwap.tomCandyA.sprite.position duration:duration];
+    moveTomB.timingMode = SKActionTimingEaseOut;
+    
+    [tomSwap.tomCandyA.sprite runAction:[SKAction sequence:@[moveTomA, [SKAction runBlock:completion]]]];
+    
+    [tomSwap.tomCandyB.sprite runAction:moveTomB];
+    
+}
+
+- (void)animateInvalidTomSwap: (TomSwap *)tomSwap completion:(dispatch_block_t)completion
+{
+    tomSwap.tomCandyA.sprite.zPosition = 100;
+    tomSwap.tomCandyB.sprite.zPosition = 90;
+    
+    const NSTimeInterval duration = 0.2;
+    
+    SKAction *moveTomA = [SKAction moveTo:tomSwap.tomCandyB.sprite.position duration:duration];
+    moveTomA.timingMode = SKActionTimingEaseOut;
+    
+    SKAction *moveTomB = [SKAction moveTo:tomSwap.tomCandyA.sprite.position duration:duration];
+    moveTomB.timingMode = SKActionTimingEaseOut;
+    
+    [tomSwap.tomCandyA.sprite runAction:[SKAction sequence:@[moveTomA, moveTomB, [SKAction runBlock:completion]]]];
+    
+    [tomSwap.tomCandyB.sprite runAction:[SKAction sequence:@[moveTomB, moveTomA]]];
+}
 @end
