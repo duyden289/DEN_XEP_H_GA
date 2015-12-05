@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "TomCandy.h"
 #import "TomTitle.h"
+#import "TomSwap.h"
 
 static const NSInteger NumColumns = 9;
 static const NSInteger NumRows = 9;
@@ -23,4 +24,5 @@ static const NSInteger NumRows = 9;
 
 - (TomTitle *)titleAtColumn:(NSInteger)column row:(NSInteger)row;
 
+- (void)performTomSwap:(TomSwap *)tomSwap;
 @end

@@ -130,5 +130,21 @@
     return _title[column][row];
 }
 
+- (void)performTomSwap:(TomSwap *)tomSwap
+{
+    NSInteger coloumnA = tomSwap.tomCandyA.column;
+    NSInteger rowA = tomSwap.tomCandyA.row;
+    
+    NSInteger coloumnB = tomSwap.tomCandyB.column;
+    NSInteger rowB = tomSwap.tomCandyB.row;
+    
+    _tom[coloumnA][rowA] = tomSwap.tomCandyB;
+    tomSwap.tomCandyB.column = coloumnA;
+    tomSwap.tomCandyB.row = rowA;
+    
+    _tom[coloumnB][rowB] = tomSwap.tomCandyA;
+    tomSwap.tomCandyA.column = coloumnB;
+    tomSwap.tomCandyA.row = rowB;
+}
 
 @end

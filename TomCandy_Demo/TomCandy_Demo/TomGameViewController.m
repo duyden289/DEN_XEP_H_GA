@@ -13,7 +13,7 @@
 
 @interface TomGameViewController ()
 
-@property (nonatomic, strong) TomScene *gameScene;
+@property (nonatomic, strong) TomScene *tomScene;
 @property (nonatomic, strong) TomLevel *level;
 
 @end
@@ -29,18 +29,30 @@
     SKView *skView = (SKView *)self.view;
     skView.multipleTouchEnabled = NO;
     
-    self.gameScene = [TomScene sceneWithSize:skView.bounds.size];
-    self.gameScene.scaleMode = SKSceneScaleModeAspectFill;
+    self.tomScene = [TomScene sceneWithSize:skView.bounds.size];
+    self.tomScene.scaleMode = SKSceneScaleModeAspectFill;
     
     // Load the Tom level
 //    self.level = [[TomLevel alloc] init];
     self.level = [[TomLevel alloc] initWithFile:@"Level_1"];
-    self.gameScene.level = self.level;
+    self.tomScene.level = self.level;
     
-    [self.gameScene addTiles];
+    [self.tomScene addTiles];
+    
+    id block = ^(TomSwap *tomSwap)
+    {
+        self.view.userInteractionEnabled = NO;
+        [self.level performTomSwap:tomSwap];
+        [self.tomScene animateTomSwap:tomSwap completion:^{
+            
+            self.view.userInteractionEnabled = YES;
+        }];
+    };
+    
+    self.tomScene.swiperHandler = block;
     
     // Present the scene
-    [skView presentScene:self.gameScene];
+    [skView presentScene:self.tomScene];
     
     
     
@@ -54,7 +66,7 @@
 - (void)shuffle
 {
     NSSet *newToms = [self.level shuffle];
-    [self.gameScene addSpriteForTom:newToms];
+    [self.tomScene addSpriteForTom:newToms];
 }
 
 - (void)beginGame

@@ -10,6 +10,7 @@
 
 
 @class TomLevel;
+@class TomSwap;
 
 @interface TomScene : SKScene
 
@@ -18,4 +19,7 @@
 - (void)addSpriteForTom: (NSSet *)toms;
 - (void)addTiles;
 
+@property (nonatomic, copy) void(^swiperHandler)(TomSwap *tomSwap);
+
+- (void)animateTomSwap:(TomSwap *)tomSwap completion:(dispatch_block_t)completion;
 @end

@@ -8,6 +8,7 @@
 
 #import "TomScene.h"
 #import "TomLevel.h"
+#import "TomSwap.h"
 
 static const CGFloat TileHeight = 32.0;
 static const CGFloat TileWight = 36.0;
@@ -139,6 +140,123 @@ static const CGFloat TileWight = 36.0;
         }
     }
    
+}
+
+- (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    //1
+    if (self.swiperFromColumn == NSNotFound) {
+        return;
+    }
+    
+    //2
+    UITouch *touch = [touches anyObject];
+    CGPoint location = [touch locationInNode:self.tomLayer];
+    
+    NSInteger coloumn, row;
+    
+    if ([self convertPoint:location toColumn:&coloumn row:&row]) {
+        
+        // 3
+        NSInteger horizontalDelta = 0, veriticalDelta = 0;
+        
+        if (coloumn < self.swiperFromColumn) { // swiper left
+            
+            horizontalDelta = -1;
+        }
+        else if (coloumn > self.swiperFromColumn) // swiper right
+        {
+            horizontalDelta = 1;
+            
+        }
+        else if (row < self.swiperFromRow) // swiper down
+        {
+            veriticalDelta = -1 ;
+        }
+        else if (row > self.swiperFromRow)
+        {
+            veriticalDelta = 1;
+        }
+        
+        //4
+        if (horizontalDelta != 0 || veriticalDelta != 0) {
+            
+            [self trySwapHorizontal:horizontalDelta veriticalDelta:veriticalDelta];
+            
+         // 5
+            self.swiperFromColumn = NSNotFound;
+        }
+        
+        
+        
+        
+    }
+}
+
+- (void)trySwapHorizontal: (NSInteger)horizontalDetal veriticalDelta:(NSInteger)veriticalDelta
+{
+    // 1
+    NSInteger toColumn = self.swiperFromColumn + horizontalDetal;
+    NSInteger toRow = self.swiperFromRow + veriticalDelta;
+    
+    // 2
+    if (toColumn < 0 || toColumn >= NumColumns) {
+        return;
+    }
+    if (toRow < 0 || toRow >= NumRows) {
+        return;
+    }
+    
+    //3
+    TomCandy *toTomCandy = [self.level tomAtCloumn:toColumn row:toRow];
+    
+    if (toTomCandy == nil) {
+        return;
+    }
+    
+    TomCandy *fromTomCandy = [self.level tomAtCloumn:self.swiperFromColumn row:self.swiperFromRow];
+    
+    if (self.swiperHandler != nil) {
+        
+        TomSwap *tomSwap = [[TomSwap alloc] init];
+        tomSwap.tomCandyA = fromTomCandy;
+        tomSwap.tomCandyB = toTomCandy;
+        
+        self.swiperHandler(tomSwap);
+    }
+    
+}
+
+- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    self.swiperFromColumn = self.swiperFromRow = NSNotFound;
+    NSLog(@"Touch End");
+}
+
+- (void)touchesCancelled:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    [self touchesEnded:touches withEvent:event];
+    NSLog(@"Touch Cancel");
+}
+
+- (void)animateTomSwap:(TomSwap *)tomSwap completion:(dispatch_block_t)completion
+{
+    // Put the tom candy you started with o top
+    tomSwap.tomCandyA.sprite.zPosition = 100;
+    tomSwap.tomCandyB.sprite.zPosition = 90;
+    
+    const NSTimeInterval duration = 0.3;
+    
+    SKAction *moveTomA = [SKAction moveTo:tomSwap.tomCandyB.sprite.position duration:duration];
+    moveTomA.timingMode = SKActionTimingEaseOut;
+    
+    [tomSwap.tomCandyA.sprite runAction:[SKAction sequence:@[moveTomA, [SKAction runBlock:completion]]]];
+    
+    SKAction *moveTomB = [SKAction moveTo:tomSwap.tomCandyA.sprite.position duration:duration];
+    moveTomB.timingMode = SKActionTimingEaseOut;
+    
+    [tomSwap.tomCandyB.sprite runAction:moveTomB];
+    
 }
 
 @end
