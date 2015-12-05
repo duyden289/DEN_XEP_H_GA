@@ -23,6 +23,13 @@ static const CGFloat TileWight = 36.0;
 
 @property (nonatomic, strong) SKSpriteNode *selectionSprite;
 
+// Sound property
+@property (nonatomic, strong) SKAction *swapSound;
+@property (nonatomic, strong) SKAction *invalidSwapSound;
+@property (nonatomic, strong) SKAction *matchSound;
+@property (nonatomic, strong) SKAction *faillingTomCandySound;
+@property (nonatomic, strong) SKAction *addTomCandySound;
+
 @end
 
 @implementation TomScene
@@ -56,6 +63,8 @@ static const CGFloat TileWight = 36.0;
         [self.gameLayer addChild:self.tomLayer];
         
         self.selectionSprite = [SKSpriteNode node];
+        
+        [self preloadSoundResource];
         
         
     }
@@ -301,6 +310,8 @@ static const CGFloat TileWight = 36.0;
     
     [tomSwap.tomCandyB.sprite runAction:moveTomB];
     
+    [self runAction:self.swapSound];
+    
 }
 
 - (void)animateInvalidTomSwap: (TomSwap *)tomSwap completion:(dispatch_block_t)completion
@@ -319,5 +330,22 @@ static const CGFloat TileWight = 36.0;
     [tomSwap.tomCandyA.sprite runAction:[SKAction sequence:@[moveTomA, moveTomB, [SKAction runBlock:completion]]]];
     
     [tomSwap.tomCandyB.sprite runAction:[SKAction sequence:@[moveTomB, moveTomA]]];
+    
+    [self runAction:self.invalidSwapSound];
+}
+
+- (void)preloadSoundResource
+{
+    self.swapSound = [SKAction playSoundFileNamed:@"Chomp.wav" waitForCompletion:NO];
+    
+    self.invalidSwapSound = [SKAction playSoundFileNamed:@"Error.wav" waitForCompletion:NO];
+    
+    self.matchSound = [SKAction playSoundFileNamed:@"Ka-Ching.wav" waitForCompletion:NO];
+    
+    self.faillingTomCandySound = [SKAction playSoundFileNamed:@"Scrape.wav" waitForCompletion:NO];
+    
+    self.addTomCandySound = [SKAction playSoundFileNamed:@"Drip.wav" waitForCompletion:NO];
+    
+    
 }
 @end
