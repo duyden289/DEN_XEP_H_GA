@@ -114,6 +114,14 @@
 			path = Sounds;
 			sourceTree = "<group>";
 		};
+		849BD6E61C133A3C002C894F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				84E527A71C04D21D00F9B8C7 /* SpriteKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		84B6A7C91C0E083600D1C40B /* Levels */ = {
 			isa = PBXGroup;
 			children = (
@@ -129,9 +137,9 @@
 		84E527801C04CC5F00F9B8C7 = {
 			isa = PBXGroup;
 			children = (
-				84E527A71C04D21D00F9B8C7 /* SpriteKit.framework */,
 				84E5278B1C04CC5F00F9B8C7 /* TomCandy_Demo */,
 				84E5278A1C04CC5F00F9B8C7 /* Products */,
+				849BD6E61C133A3C002C894F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
