@@ -377,4 +377,38 @@ static const CGFloat TileWight = 36.0;
     [self runAction:[SKAction sequence:@[[SKAction waitForDuration:0.3], [SKAction runBlock:completion]]]];
     
 }
+
+- (void)animateFallingTomCandy:(NSArray *)columns completion:(dispatch_block_t)completion
+{
+    //1
+    __block NSTimeInterval longestDuration = 0;
+    
+    for (NSArray *array  in columns) {
+        
+        [array enumerateObjectsUsingBlock:^(TomCandy *tomCandy, NSUInteger idx, BOOL * stop) {
+            
+            CGPoint newPostion = [self pointForColumn:tomCandy.column row:tomCandy.row];
+            
+            //2
+            NSTimeInterval delay = 0.05 + 0.15*idx;
+            
+            //3
+            
+            NSTimeInterval duration = ((tomCandy.sprite.position.y - newPostion.y) / TileHeight) *0.1;
+            
+            //4
+            longestDuration = MAX(longestDuration, duration + delay);
+            
+            //5
+            SKAction *moveAction = [SKAction moveTo:newPostion duration:duration];
+            moveAction.timingMode = SKActionTimingEaseOut;
+            
+            [tomCandy.sprite runAction:[SKAction sequence:@[[SKAction waitForDuration:delay], [SKAction group:@[moveAction, self.faillingTomCandySound]]]]];
+            
+        }];
+    }
+    
+    //6
+    [self runAction:[SKAction sequence:@[[SKAction waitForDuration:longestDuration], [SKAction runBlock:completion]]]];
+}
 @end

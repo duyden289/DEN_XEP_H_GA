@@ -367,4 +367,49 @@
     }
 }
 
+- (NSArray *)fillHoles
+{
+    NSMutableArray *columns = [NSMutableArray array];
+    
+    //1
+    for (NSInteger column = 0; column < NumColumns; column ++) {
+        
+        NSMutableArray *array ;
+        
+        for (NSInteger row = 0; row < NumRows; row ++) {
+            
+            //2
+            if (_title[column][row] != nil && _tom[column][row] == nil) {
+                
+                //3
+                for (NSInteger lookup = row + 1; lookup < NumRows; lookup ++) {
+                    
+                    TomCandy *tomCandy = _tom[column][lookup];
+                    
+                    if (tomCandy != nil) {
+                        
+                        //4
+                        _tom[column][lookup] = nil;
+                        _tom[column][row] = tomCandy;
+                        tomCandy.row = row;
+                        
+                        // 5
+                        if (array == nil) {
+                            
+                            array = [NSMutableArray array];
+                            [columns addObject: array];
+                        }
+                        [array addObject:tomCandy];
+                        
+                        //6
+                        break;
+                    }
+                }
+            }
+            
+        }
+    }
+    return columns;
+}
+
 @end

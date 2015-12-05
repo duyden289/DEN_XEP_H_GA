@@ -29,6 +29,8 @@ static const NSInteger NumRows = 9;
 
 - (BOOL)isPossibleTomSwap:(TomSwap *)tomSwap;
 
+- (NSArray *)fillHoles;
+
 /**
  *  Remove matches
  *

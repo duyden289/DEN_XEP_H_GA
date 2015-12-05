@@ -91,7 +91,13 @@
     
     [self.tomScene animateMatchedTomCandy:chains completion:^{
        
-        self.view.userInteractionEnabled = YES;
+        NSArray *columns = [self.level fillHoles];
+        
+        [self.tomScene animateFallingTomCandy:columns completion:^{
+            
+            self.view.userInteractionEnabled = YES;
+        }];
+        
     }];
 }
 
