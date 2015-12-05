@@ -412,4 +412,46 @@
     return columns;
 }
 
+- (NSArray *)topUpdaTomCandys
+{
+    NSMutableArray *columns = [NSMutableArray array];
+    
+    NSUInteger tomType = 0;
+    
+    for (NSInteger column = 0; column < NumColumns; column ++) {
+        
+        NSMutableArray * array;
+        
+        //1
+        for (NSInteger row = NumRows - 1; row >= 0 && _tom[column][row]; row-- ) {
+            
+            //2
+            if (_title[column][row] != nil) {
+                
+                //3
+                NSUInteger newTomType;
+                
+                do
+                {
+                    newTomType = arc4random_uniform(NumTomTypes) +1;
+                }
+                while (newTomType == tomType);
+                
+                tomType = newTomType;
+                
+                //4
+                TomCandy *tomCandy = [self createTomAtColumn:column row:row withType:tomType];
+                
+                //5
+                if (array == nil) {
+                    
+                    array = [NSMutableArray array];
+                    [columns addObject:array];
+                }
+                [array addObject:tomCandy];
+            }
+        }
+    }
+    return columns;
+}
 @end

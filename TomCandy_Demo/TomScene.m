@@ -411,4 +411,47 @@ static const CGFloat TileWight = 36.0;
     //6
     [self runAction:[SKAction sequence:@[[SKAction waitForDuration:longestDuration], [SKAction runBlock:completion]]]];
 }
+
+// Adding new tom candy
+- (void)animatedNewTomCandy:(NSArray *)columns completion:(dispatch_block_t)completion
+{
+    //1
+    __block NSTimeInterval longestDuration = 0;
+    
+    for (NSArray *array in columns) {
+        
+        //2
+        NSInteger startRow = ((TomCandy *)[array firstObject]).row + 1;
+        
+        [array enumerateObjectsUsingBlock:^(TomCandy *tomCandy, NSUInteger idx, BOOL * stop) {
+            
+            //3
+            SKSpriteNode *sprite = [SKSpriteNode spriteNodeWithImageNamed:[tomCandy spriteName]];
+            sprite.position = [self pointForColumn:tomCandy.column row:startRow];
+            
+            [self.tomLayer addChild:sprite];
+            tomCandy.sprite = sprite;
+            
+            //4
+            NSTimeInterval delay = 0.1 + 0.2*([array count]) - idx - 1;
+            
+            //5
+            NSTimeInterval duration = (startRow - tomCandy.row) * 0.1;
+            longestDuration = MAX(longestDuration, duration + delay);
+            
+            //6
+            CGPoint newPosition = [self pointForColumn:tomCandy.column row:tomCandy.row];
+            
+            SKAction *moveAction = [SKAction moveTo:newPosition duration:duration];
+            moveAction.timingMode = SKActionTimingEaseOut;
+            
+            tomCandy.sprite.alpha = 0;
+            
+            [tomCandy.sprite runAction:[SKAction sequence:@[[SKAction waitForDuration:delay], [SKAction group:@[[SKAction fadeInWithDuration:0.05], moveAction, self.addTomCandySound]]]]];
+        }];
+    }
+    
+    //7
+    [self runAction:[SKAction sequence:@[[SKAction waitForDuration:longestDuration], [SKAction runBlock:completion]]]];
+}
 @end

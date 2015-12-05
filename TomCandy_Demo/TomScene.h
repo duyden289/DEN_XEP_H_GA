@@ -25,4 +25,7 @@
 - (void)animateInvalidTomSwap: (TomSwap *)tomSwap completion:(dispatch_block_t)completion;
 - (void)animateMatchedTomCandy: (NSSet *)tomChains completion:(dispatch_block_t)completion;
 - (void)animateFallingTomCandy: (NSArray *)columns completion:(dispatch_block_t)completion;
+
+// Adding new tom candy
+- (void)animatedNewTomCandy:(NSArray *)columns completion:(dispatch_block_t)completion;
 @end

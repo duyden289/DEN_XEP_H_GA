@@ -95,7 +95,12 @@
         
         [self.tomScene animateFallingTomCandy:columns completion:^{
             
-            self.view.userInteractionEnabled = YES;
+            NSArray *columns = [self.level topUpdaTomCandys];
+            
+            [self.tomScene animatedNewTomCandy:columns completion:^{
+                
+                self.view.userInteractionEnabled = YES;
+            }];
         }];
         
     }];

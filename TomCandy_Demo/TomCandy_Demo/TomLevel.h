@@ -31,6 +31,8 @@ static const NSInteger NumRows = 9;
 
 - (NSArray *)fillHoles;
 
+- (NSArray *)topUpdaTomCandys;
+
 /**
  *  Remove matches
  *
