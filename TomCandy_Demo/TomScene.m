@@ -21,6 +21,8 @@ static const CGFloat TileWight = 36.0;
 @property (nonatomic, assign) NSInteger swiperFromColumn;
 @property (nonatomic, assign) NSInteger swiperFromRow;
 
+@property (nonatomic, strong) SKSpriteNode *selectionSprite;
+
 @end
 
 @implementation TomScene
@@ -52,6 +54,8 @@ static const CGFloat TileWight = 36.0;
         self.tomLayer.position = layerPosition;
         
         [self.gameLayer addChild:self.tomLayer];
+        
+        self.selectionSprite = [SKSpriteNode node];
         
         
     }
@@ -139,6 +143,8 @@ static const CGFloat TileWight = 36.0;
             // 4
             self.swiperFromColumn = column;
             self.swiperFromRow = row;
+            
+            [self showSelectionIndicatorForTomCandy:tomCandy];
         }
     }
    
@@ -184,6 +190,8 @@ static const CGFloat TileWight = 36.0;
         if (horizontalDelta != 0 || veriticalDelta != 0) {
             
             [self trySwapHorizontal:horizontalDelta veriticalDelta:veriticalDelta];
+            
+            [self hideSelectionIndicator];
             
          // 5
             self.swiperFromColumn = NSNotFound;
@@ -231,7 +239,11 @@ static const CGFloat TileWight = 36.0;
 
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
-    self.swiperFromColumn = self.swiperFromRow = NSNotFound;
+//    self.swiperFromColumn = self.swiperFromRow = NSNotFound;
+    if (self.selectionSprite.parent != nil && self.swiperFromColumn != NSNotFound) {
+        
+        [self hideSelectionIndicator];
+    }
     NSLog(@"Touch End");
 }
 
@@ -259,6 +271,34 @@ static const CGFloat TileWight = 36.0;
     
     [tomSwap.tomCandyB.sprite runAction:moveTomB];
     
+}
+
+/**
+ *  Highlight for image
+ */
+- (void)showSelectionIndicatorForTomCandy:(TomCandy *)tomCandy
+{
+    // If the seletion indicator is still visable then first remove
+    
+    if (self.selectionSprite.parent != nil) {
+        
+        [self.selectionSprite removeFromParent];
+    }
+    SKTexture *textture = [SKTexture textureWithImageNamed:[tomCandy highlightedSpriteName]];
+    
+    self.selectionSprite.size = textture.size;
+    [self.selectionSprite runAction:[SKAction setTexture:textture]];
+    
+    [tomCandy.sprite addChild:self.selectionSprite];
+    self.selectionSprite.alpha = 1.0;
+}
+
+/**
+ *  Hide selection indicator
+ */
+- (void)hideSelectionIndicator
+{
+    [self.selectionSprite runAction:[SKAction sequence:@[[SKAction fadeOutWithDuration:0.3], [SKAction removeFromParent]]]];
 }
 
 @end
