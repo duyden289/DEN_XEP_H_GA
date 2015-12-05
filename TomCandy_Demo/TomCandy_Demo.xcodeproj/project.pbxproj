@@ -9,16 +9,22 @@
 /* Begin PBXBuildFile section */
 		849F8BAC1C05FDB200CFED66 /* TomCandy.m in Sources */ = {isa = PBXBuildFile; fileRef = 849F8BAB1C05FDB200CFED66 /* TomCandy.m */; };
 		849F8BAF1C06053300CFED66 /* TomLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = 849F8BAE1C06053300CFED66 /* TomLevel.m */; };
+		84B6A7CF1C0E083600D1C40B /* Level_0.json in Resources */ = {isa = PBXBuildFile; fileRef = 84B6A7CA1C0E083600D1C40B /* Level_0.json */; };
+		84B6A7D01C0E083600D1C40B /* Level_1.json in Resources */ = {isa = PBXBuildFile; fileRef = 84B6A7CB1C0E083600D1C40B /* Level_1.json */; };
+		84B6A7D11C0E083600D1C40B /* Level_2.json in Resources */ = {isa = PBXBuildFile; fileRef = 84B6A7CC1C0E083600D1C40B /* Level_2.json */; };
+		84B6A7D21C0E083600D1C40B /* Level_3.json in Resources */ = {isa = PBXBuildFile; fileRef = 84B6A7CD1C0E083600D1C40B /* Level_3.json */; };
+		84B6A7D31C0E083600D1C40B /* Level_4.json in Resources */ = {isa = PBXBuildFile; fileRef = 84B6A7CE1C0E083600D1C40B /* Level_4.json */; };
+		84B6A7D61C0E08CE00D1C40B /* TomTitle.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B6A7D51C0E08CE00D1C40B /* TomTitle.m */; };
 		84E5278E1C04CC5F00F9B8C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E5278D1C04CC5F00F9B8C7 /* main.m */; };
 		84E527911C04CC5F00F9B8C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E527901C04CC5F00F9B8C7 /* AppDelegate.m */; };
 		84E527931C04CC5F00F9B8C7 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 84E527921C04CC5F00F9B8C7 /* art.scnassets */; };
-		84E527961C04CC5F00F9B8C7 /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E527951C04CC5F00F9B8C7 /* GameViewController.m */; };
+		84E527961C04CC5F00F9B8C7 /* TomGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E527951C04CC5F00F9B8C7 /* TomGameViewController.m */; };
 		84E527991C04CC5F00F9B8C7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84E527971C04CC5F00F9B8C7 /* Main.storyboard */; };
 		84E5279B1C04CC5F00F9B8C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84E5279A1C04CC5F00F9B8C7 /* Assets.xcassets */; };
 		84E5279E1C04CC5F00F9B8C7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84E5279C1C04CC5F00F9B8C7 /* LaunchScreen.storyboard */; };
 		84E527A61C04CDD200F9B8C7 /* Sprites.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 84E527A51C04CDD200F9B8C7 /* Sprites.atlas */; };
 		84E527A81C04D21D00F9B8C7 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84E527A71C04D21D00F9B8C7 /* SpriteKit.framework */; };
-		84E527AB1C04D2D500F9B8C7 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E527AA1C04D2D500F9B8C7 /* GameScene.m */; };
+		84E527AB1C04D2D500F9B8C7 /* TomScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E527AA1C04D2D500F9B8C7 /* TomScene.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,21 +32,28 @@
 		849F8BAB1C05FDB200CFED66 /* TomCandy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TomCandy.m; sourceTree = "<group>"; };
 		849F8BAD1C06053300CFED66 /* TomLevel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TomLevel.h; sourceTree = "<group>"; };
 		849F8BAE1C06053300CFED66 /* TomLevel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TomLevel.m; sourceTree = "<group>"; };
+		84B6A7CA1C0E083600D1C40B /* Level_0.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Level_0.json; sourceTree = "<group>"; };
+		84B6A7CB1C0E083600D1C40B /* Level_1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Level_1.json; sourceTree = "<group>"; };
+		84B6A7CC1C0E083600D1C40B /* Level_2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Level_2.json; sourceTree = "<group>"; };
+		84B6A7CD1C0E083600D1C40B /* Level_3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Level_3.json; sourceTree = "<group>"; };
+		84B6A7CE1C0E083600D1C40B /* Level_4.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Level_4.json; sourceTree = "<group>"; };
+		84B6A7D41C0E08CE00D1C40B /* TomTitle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TomTitle.h; sourceTree = "<group>"; };
+		84B6A7D51C0E08CE00D1C40B /* TomTitle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TomTitle.m; sourceTree = "<group>"; };
 		84E527891C04CC5F00F9B8C7 /* TomCandy_Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TomCandy_Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84E5278D1C04CC5F00F9B8C7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		84E5278F1C04CC5F00F9B8C7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		84E527901C04CC5F00F9B8C7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		84E527921C04CC5F00F9B8C7 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
-		84E527941C04CC5F00F9B8C7 /* GameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
-		84E527951C04CC5F00F9B8C7 /* GameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
+		84E527941C04CC5F00F9B8C7 /* TomGameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TomGameViewController.h; sourceTree = "<group>"; };
+		84E527951C04CC5F00F9B8C7 /* TomGameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TomGameViewController.m; sourceTree = "<group>"; };
 		84E527981C04CC5F00F9B8C7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		84E5279A1C04CC5F00F9B8C7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		84E5279D1C04CC5F00F9B8C7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		84E5279F1C04CC5F00F9B8C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84E527A51C04CDD200F9B8C7 /* Sprites.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Sprites.atlas; sourceTree = "<group>"; };
 		84E527A71C04D21D00F9B8C7 /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
-		84E527A91C04D2D500F9B8C7 /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameScene.h; path = ../GameScene.h; sourceTree = "<group>"; };
-		84E527AA1C04D2D500F9B8C7 /* GameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameScene.m; path = ../GameScene.m; sourceTree = "<group>"; };
+		84E527A91C04D2D500F9B8C7 /* TomScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TomScene.h; path = ../TomScene.h; sourceTree = "<group>"; };
+		84E527AA1C04D2D500F9B8C7 /* TomScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TomScene.m; path = ../TomScene.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +68,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		84B6A7C91C0E083600D1C40B /* Levels */ = {
+			isa = PBXGroup;
+			children = (
+				84B6A7CA1C0E083600D1C40B /* Level_0.json */,
+				84B6A7CB1C0E083600D1C40B /* Level_1.json */,
+				84B6A7CC1C0E083600D1C40B /* Level_2.json */,
+				84B6A7CD1C0E083600D1C40B /* Level_3.json */,
+				84B6A7CE1C0E083600D1C40B /* Level_4.json */,
+			);
+			path = Levels;
+			sourceTree = "<group>";
+		};
 		84E527801C04CC5F00F9B8C7 = {
 			isa = PBXGroup;
 			children = (
@@ -75,18 +100,21 @@
 		84E5278B1C04CC5F00F9B8C7 /* TomCandy_Demo */ = {
 			isa = PBXGroup;
 			children = (
+				84B6A7C91C0E083600D1C40B /* Levels */,
 				84E527A51C04CDD200F9B8C7 /* Sprites.atlas */,
 				84E5278F1C04CC5F00F9B8C7 /* AppDelegate.h */,
 				84E527901C04CC5F00F9B8C7 /* AppDelegate.m */,
 				84E527921C04CC5F00F9B8C7 /* art.scnassets */,
-				84E527941C04CC5F00F9B8C7 /* GameViewController.h */,
-				84E527951C04CC5F00F9B8C7 /* GameViewController.m */,
-				84E527A91C04D2D500F9B8C7 /* GameScene.h */,
-				84E527AA1C04D2D500F9B8C7 /* GameScene.m */,
+				84E527941C04CC5F00F9B8C7 /* TomGameViewController.h */,
+				84E527951C04CC5F00F9B8C7 /* TomGameViewController.m */,
+				84E527A91C04D2D500F9B8C7 /* TomScene.h */,
+				84E527AA1C04D2D500F9B8C7 /* TomScene.m */,
 				849F8BAA1C05FDB200CFED66 /* TomCandy.h */,
 				849F8BAB1C05FDB200CFED66 /* TomCandy.m */,
 				849F8BAD1C06053300CFED66 /* TomLevel.h */,
 				849F8BAE1C06053300CFED66 /* TomLevel.m */,
+				84B6A7D41C0E08CE00D1C40B /* TomTitle.h */,
+				84B6A7D51C0E08CE00D1C40B /* TomTitle.m */,
 				84E527971C04CC5F00F9B8C7 /* Main.storyboard */,
 				84E5279A1C04CC5F00F9B8C7 /* Assets.xcassets */,
 				84E5279C1C04CC5F00F9B8C7 /* LaunchScreen.storyboard */,
@@ -161,9 +189,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84B6A7D01C0E083600D1C40B /* Level_1.json in Resources */,
+				84B6A7D31C0E083600D1C40B /* Level_4.json in Resources */,
+				84B6A7D21C0E083600D1C40B /* Level_3.json in Resources */,
 				84E527931C04CC5F00F9B8C7 /* art.scnassets in Resources */,
+				84B6A7CF1C0E083600D1C40B /* Level_0.json in Resources */,
 				84E5279E1C04CC5F00F9B8C7 /* LaunchScreen.storyboard in Resources */,
 				84E5279B1C04CC5F00F9B8C7 /* Assets.xcassets in Resources */,
+				84B6A7D11C0E083600D1C40B /* Level_2.json in Resources */,
 				84E527991C04CC5F00F9B8C7 /* Main.storyboard in Resources */,
 				84E527A61C04CDD200F9B8C7 /* Sprites.atlas in Resources */,
 			);
@@ -177,9 +210,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				84E527911C04CC5F00F9B8C7 /* AppDelegate.m in Sources */,
-				84E527961C04CC5F00F9B8C7 /* GameViewController.m in Sources */,
-				84E527AB1C04D2D500F9B8C7 /* GameScene.m in Sources */,
+				84E527961C04CC5F00F9B8C7 /* TomGameViewController.m in Sources */,
+				84E527AB1C04D2D500F9B8C7 /* TomScene.m in Sources */,
 				849F8BAF1C06053300CFED66 /* TomLevel.m in Sources */,
+				84B6A7D61C0E08CE00D1C40B /* TomTitle.m in Sources */,
 				849F8BAC1C05FDB200CFED66 /* TomCandy.m in Sources */,
 				84E5278E1C04CC5F00F9B8C7 /* main.m in Sources */,
 			);

@@ -11,10 +11,11 @@
 
 @class TomLevel;
 
-@interface GameScene : SKScene
+@interface TomScene : SKScene
 
 @property (nonatomic, strong) TomLevel *level;
 
 - (void)addSpriteForTom: (NSSet *)toms;
+- (void)addTiles;
 
 @end

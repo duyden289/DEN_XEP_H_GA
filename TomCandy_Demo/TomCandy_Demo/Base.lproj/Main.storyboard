@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="d4p-8B-ftf">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
     </dependencies>
     <scenes>
-        <!--Game View Controller-->
+        <!--Tom Game View Controller-->
         <scene sceneID="xdR-c9-UjM">
             <objects>
-                <viewController id="d4p-8B-ftf" customClass="GameViewController" sceneMemberID="viewController">
+                <viewController id="d4p-8B-ftf" customClass="TomGameViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jzF-z7-dYV"/>
                         <viewControllerLayoutGuide type="bottom" id="g01-uu-dlX"/>

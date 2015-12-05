@@ -6,19 +6,19 @@
 //  Copyright (c) 2015 nguyenhuuden. All rights reserved.
 //
 
-#import "GameViewController.h"
-#import "GameScene.h"
+#import "TomGameViewController.h"
+#import "TomScene.h"
 #import "TomLevel.h"
 
 
-@interface GameViewController ()
+@interface TomGameViewController ()
 
-@property (nonatomic, strong) GameScene *gameScene;
+@property (nonatomic, strong) TomScene *gameScene;
 @property (nonatomic, strong) TomLevel *level;
 
 @end
 
-@implementation GameViewController
+@implementation TomGameViewController
 
 - (void)viewDidLoad
 {
@@ -29,18 +29,26 @@
     SKView *skView = (SKView *)self.view;
     skView.multipleTouchEnabled = NO;
     
-    self.gameScene = [GameScene sceneWithSize:skView.bounds.size];
+    self.gameScene = [TomScene sceneWithSize:skView.bounds.size];
     self.gameScene.scaleMode = SKSceneScaleModeAspectFill;
     
     // Load the Tom level
-    self.level = [[TomLevel alloc] init];
+//    self.level = [[TomLevel alloc] init];
+    self.level = [[TomLevel alloc] initWithFile:@"Level_1"];
     self.gameScene.level = self.level;
+    
+    [self.gameScene addTiles];
     
     // Present the scene
     [skView presentScene:self.gameScene];
     
+    
+    
     // Let's start begin game
     [self beginGame];
+    
+
+    
 }
 
 - (void)shuffle

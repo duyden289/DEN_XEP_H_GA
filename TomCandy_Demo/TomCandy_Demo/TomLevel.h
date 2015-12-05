@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "TomCandy.h"
+#import "TomTitle.h"
 
 static const NSInteger NumColumns = 9;
 static const NSInteger NumRows = 9;
@@ -17,5 +18,9 @@ static const NSInteger NumRows = 9;
 - (NSSet *)shuffle;
 
 - (TomCandy *)tomAtCloumn: (NSInteger)column row:(NSInteger)row;
+
+- (instancetype)initWithFile:(NSString *)fileName;
+
+- (TomTitle *)titleAtColumn:(NSInteger)column row:(NSInteger)row;
 
 @end
