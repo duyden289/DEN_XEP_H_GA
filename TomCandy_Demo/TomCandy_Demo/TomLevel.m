@@ -8,12 +8,11 @@
 
 #import "TomLevel.h"
 
-//@interface TomLevel()
-//{
-//    TomCandy *_tom[]
-//}
-//
-//@end
+@interface TomLevel()
+
+@property (nonatomic, strong) NSSet *possibleTomSwaps;
+
+@end
 
 @implementation TomLevel
 {
@@ -75,7 +74,19 @@
 
 - (NSSet *)shuffle
 {
-   return [self createInitialToms];
+    NSSet *set;
+    
+    do
+    {
+        set = [self createInitialToms];
+        
+        [self detectPossibleTomSwaps];
+        
+        NSLog(@"Possible tom swap %@", self.possibleTomSwaps);
+    }
+    while ([self.possibleTomSwaps count] == 0);
+    
+    return set;
 }
 
 - (NSDictionary *)loadJSON: (NSString *)fileName
@@ -154,4 +165,97 @@
     tomSwap.tomCandyA.row = rowB;
 }
 
+- (BOOL)hasChainAtColumn:(NSInteger)column row:(NSInteger)row
+{
+    NSUInteger tomType = _tom[column][row].tomType;
+    
+    NSUInteger horizontalLenght = 1;
+    
+    for (NSInteger i = column - 1; i >= 0 && _tom[i][row].tomType == tomType; i --, horizontalLenght ++ );
+    for (NSInteger i = column + 1; i< NumColumns && _tom[i][row].tomType == tomType ; i++, horizontalLenght ++);
+    
+    if (horizontalLenght >= 3) return YES;
+    
+    
+    NSUInteger verticalLenght = 1;
+    for (NSInteger i = row - 1; i >=0 && _tom[column][i].tomType == tomType ; i--, verticalLenght ++);
+    
+    for (NSInteger i = row + 1; i < NumRows && _tom[column][i].tomType == tomType; i++, verticalLenght ++){}
+    
+        return (verticalLenght >= 3);
+}
+
+- (void)detectPossibleTomSwaps
+{
+    NSMutableSet *set = [NSMutableSet set];
+    
+    for (NSInteger row = 0; row < NumRows; row++) {
+        
+        for (NSInteger column = 0; column < NumColumns; column ++) {
+            
+            TomCandy *tomCandy = _tom[column][row];
+            
+            if (tomCandy != nil) {
+                
+                if (column < NumColumns - 1) {
+                    
+                    TomCandy *otherTomCandy = _tom[column + 1][row];
+                    
+                    if (otherTomCandy != nil) {
+                        
+                        // Swap them
+                        _tom[column][row] = otherTomCandy;
+                        _tom[column + 1][row] = tomCandy;
+                        
+                        // Is either tom candy now part of a chain?
+                        if ([self hasChainAtColumn:column + 1 row:row] || [self hasChainAtColumn:column row:row]) {
+                            
+                            TomSwap *tomSwap = [[TomSwap alloc] init];
+                            tomSwap.tomCandyA = tomCandy;
+                            tomSwap.tomCandyB = otherTomCandy;
+                            
+                            [set addObject:tomSwap];
+                        }
+                      
+                        // Swap them back
+                        _tom[column][row] = tomCandy;
+                        _tom[column +1 ][row] = otherTomCandy;
+                    }
+                }
+                
+                if (row < NumRows - 1) {
+                    
+                    TomCandy *otherTomCandy = _tom[column][row + 1];
+                    if (otherTomCandy != nil) {
+                        
+                        // Swap them
+                        _tom[column][row] = otherTomCandy;
+                        _tom[column][row + 1] = tomCandy;
+                        
+                        if ([self hasChainAtColumn:column row:row + 1] || [self hasChainAtColumn:column row:row]) {
+                            
+                            TomSwap *tomSwap = [[TomSwap alloc] init];
+                            tomSwap.tomCandyA = tomCandy;
+                            tomSwap.tomCandyB = otherTomCandy;
+                            
+                            [set addObject:tomSwap];
+                        }
+                        
+                        // Swap back them
+                        _tom[column][row] = tomCandy;
+                        _tom[column][row + 1] = otherTomCandy;
+                    }
+                }
+                
+            }
+        }
+        
+    }
+    self.possibleTomSwaps = set;
+}
+
+- (BOOL)isPossibleTomSwap:(TomSwap *)tomSwap
+{
+    return [self.possibleTomSwaps containsObject:tomSwap];
+}
 @end

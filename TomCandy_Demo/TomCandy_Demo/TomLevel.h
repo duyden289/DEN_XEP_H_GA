@@ -25,4 +25,6 @@ static const NSInteger NumRows = 9;
 - (TomTitle *)titleAtColumn:(NSInteger)column row:(NSInteger)row;
 
 - (void)performTomSwap:(TomSwap *)tomSwap;
+
+- (BOOL)isPossibleTomSwap:(TomSwap *)tomSwap;
 @end

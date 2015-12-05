@@ -42,11 +42,18 @@
     id block = ^(TomSwap *tomSwap)
     {
         self.view.userInteractionEnabled = NO;
-        [self.level performTomSwap:tomSwap];
-        [self.tomScene animateTomSwap:tomSwap completion:^{
+        if ([self.level isPossibleTomSwap:tomSwap]) {
             
+            [self.level performTomSwap:tomSwap];
+            [self.tomScene animateTomSwap:tomSwap completion:^{
+                
+                self.view.userInteractionEnabled = YES;
+            }];
+        }
+        else
+        {
             self.view.userInteractionEnabled = YES;
-        }];
+        }
     };
     
     self.tomScene.swiperHandler = block;
