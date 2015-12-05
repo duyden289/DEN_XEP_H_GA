@@ -348,4 +348,33 @@ static const CGFloat TileWight = 36.0;
     
     
 }
+
+- (void)animateMatchedTomCandy: (NSSet *)tomChains completion:(dispatch_block_t)completion
+{
+    for (TomChain *chain in tomChains) {
+        
+        for (TomCandy *tomCandy in chain.tomCandys) {
+            
+            //1
+            if (tomCandy.sprite != nil) {
+                
+                //2
+                SKAction *scaleAction = [SKAction scaleTo:0.1 duration:0.3];
+                
+                scaleAction.timingMode = SKActionTimingEaseOut;
+                
+                [tomCandy.sprite runAction:[SKAction sequence:@[scaleAction, [SKAction removeFromParent]]]];
+                
+                //3
+                tomCandy.sprite = nil;
+                
+            }
+        }
+    }
+    [self runAction:self.matchSound];
+    
+    //4
+    [self runAction:[SKAction sequence:@[[SKAction waitForDuration:0.3], [SKAction runBlock:completion]]]];
+    
+}
 @end

@@ -10,6 +10,7 @@
 #import "TomCandy.h"
 #import "TomTitle.h"
 #import "TomSwap.h"
+#import "TomChain.h"
 
 static const NSInteger NumColumns = 9;
 static const NSInteger NumRows = 9;
@@ -27,4 +28,11 @@ static const NSInteger NumRows = 9;
 - (void)performTomSwap:(TomSwap *)tomSwap;
 
 - (BOOL)isPossibleTomSwap:(TomSwap *)tomSwap;
+
+/**
+ *  Remove matches
+ *
+ *  @return a array set has remove
+ */
+- (NSSet *)removeMatches;
 @end

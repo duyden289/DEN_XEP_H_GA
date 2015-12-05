@@ -14,6 +14,7 @@
 		849BD6E31C133779002C894F /* Ka-Ching.wav in Resources */ = {isa = PBXBuildFile; fileRef = 849BD6DD1C133779002C894F /* Ka-Ching.wav */; };
 		849BD6E41C133779002C894F /* Mining by Moonlight.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 849BD6DE1C133779002C894F /* Mining by Moonlight.mp3 */; };
 		849BD6E51C133779002C894F /* Scrape.wav in Resources */ = {isa = PBXBuildFile; fileRef = 849BD6DF1C133779002C894F /* Scrape.wav */; };
+		849BD6E91C133D22002C894F /* TomChain.m in Sources */ = {isa = PBXBuildFile; fileRef = 849BD6E81C133D22002C894F /* TomChain.m */; };
 		849F8BAC1C05FDB200CFED66 /* TomCandy.m in Sources */ = {isa = PBXBuildFile; fileRef = 849F8BAB1C05FDB200CFED66 /* TomCandy.m */; };
 		849F8BAF1C06053300CFED66 /* TomLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = 849F8BAE1C06053300CFED66 /* TomLevel.m */; };
 		84B6A7CF1C0E083600D1C40B /* Level_0.json in Resources */ = {isa = PBXBuildFile; fileRef = 84B6A7CA1C0E083600D1C40B /* Level_0.json */; };
@@ -43,6 +44,8 @@
 		849BD6DD1C133779002C894F /* Ka-Ching.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "Ka-Ching.wav"; sourceTree = "<group>"; };
 		849BD6DE1C133779002C894F /* Mining by Moonlight.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Mining by Moonlight.mp3"; sourceTree = "<group>"; };
 		849BD6DF1C133779002C894F /* Scrape.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Scrape.wav; sourceTree = "<group>"; };
+		849BD6E71C133D22002C894F /* TomChain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TomChain.h; sourceTree = "<group>"; };
+		849BD6E81C133D22002C894F /* TomChain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TomChain.m; sourceTree = "<group>"; };
 		849F8BAA1C05FDB200CFED66 /* TomCandy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TomCandy.h; sourceTree = "<group>"; };
 		849F8BAB1C05FDB200CFED66 /* TomCandy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TomCandy.m; sourceTree = "<group>"; };
 		849F8BAD1C06053300CFED66 /* TomLevel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TomLevel.h; sourceTree = "<group>"; };
@@ -170,6 +173,8 @@
 				84B6A7D51C0E08CE00D1C40B /* TomTitle.m */,
 				849BD6D61C12FDEA002C894F /* TomSwap.h */,
 				849BD6D71C12FDEA002C894F /* TomSwap.m */,
+				849BD6E71C133D22002C894F /* TomChain.h */,
+				849BD6E81C133D22002C894F /* TomChain.m */,
 				84E527971C04CC5F00F9B8C7 /* Main.storyboard */,
 				84E5279A1C04CC5F00F9B8C7 /* Assets.xcassets */,
 				84E5279C1C04CC5F00F9B8C7 /* LaunchScreen.storyboard */,
@@ -272,6 +277,7 @@
 			files = (
 				84E527911C04CC5F00F9B8C7 /* AppDelegate.m in Sources */,
 				84E527961C04CC5F00F9B8C7 /* TomGameViewController.m in Sources */,
+				849BD6E91C133D22002C894F /* TomChain.m in Sources */,
 				84E527AB1C04D2D500F9B8C7 /* TomScene.m in Sources */,
 				849F8BAF1C06053300CFED66 /* TomLevel.m in Sources */,
 				84B6A7D61C0E08CE00D1C40B /* TomTitle.m in Sources */,
@@ -388,6 +394,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = TomCandy_Demo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.vn.huuden.TomCandy-Demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -399,6 +406,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = TomCandy_Demo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.vn.huuden.TomCandy-Demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";

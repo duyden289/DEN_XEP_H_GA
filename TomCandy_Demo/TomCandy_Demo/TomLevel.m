@@ -258,4 +258,113 @@
 {
     return [self.possibleTomSwaps containsObject:tomSwap];
 }
+
+/**
+ *  Scan with horizontal matches
+ *
+ *  @return a set has detect
+ */
+- (NSSet *)detectHorizontalMatches
+{
+    //1
+    NSMutableSet *set = [NSMutableSet set];
+    
+    //2
+    for (NSInteger row = 0; row < NumRows; row ++) {
+        
+        for (NSInteger column = 0; column < NumColumns - 2 ;) {
+            
+            //3
+            if (_tom[column][row] != nil) {
+                
+                NSUInteger matchType = _tom[column][row].tomType;
+                
+                //4
+                
+                if (_tom[column + 1][row].tomType == matchType && _tom[column + 2][row].tomType == matchType) {
+                    
+                    TomChain *tomChain = [[TomChain alloc] init];
+                    tomChain.tomChainType = TomChainTypeHorizontal;
+                    
+                    do
+                    {
+                        [tomChain addTomCandy:_tom[column][row]];
+                        column += 1;
+                    }
+                    while (column < NumColumns && _tom[column][row].tomType == matchType);
+                    
+                    [set addObject:tomChain];
+                    
+                    continue;
+                    
+                }
+            }
+            column += 1;
+        }
+    }
+    return set;
+}
+
+/**
+ *  Scan with veritical matches
+ *
+ *  @return a set has detect
+ */
+- (NSSet *)detectVeriticalMatches
+{
+    NSMutableSet *set = [NSMutableSet set];
+    
+    for (NSInteger coloumn = 0 ; coloumn < NumColumns; coloumn ++) {
+        
+        for (NSInteger row = 0; row < NumRows - 2; ) {
+            
+            if (_tom[coloumn][row] != nil) {
+                
+                NSUInteger matchType = _tom[coloumn][row].tomType;
+                
+                if (_tom[coloumn][row + 1].tomType == matchType && _tom[coloumn][row + 2].tomType == matchType) {
+                    
+                    TomChain *tomChain = [[TomChain alloc] init];
+                    tomChain.tomChainType = TomChainTypeVeritical;
+                    
+                    do
+                    {
+                        [tomChain addTomCandy:_tom[coloumn][row]];
+                        row += 1;
+                    }
+                    while (row < NumRows && _tom[coloumn][row].tomType == matchType);
+                    
+                    [set addObject:tomChain];
+                    continue;
+                }
+            }
+            row += 1;
+        }
+    }
+    
+    return set;
+}
+
+- (NSSet *)removeMatches
+{
+    NSSet *horizontalTomChain = [self detectHorizontalMatches];
+    NSSet *veriticalTomChain = [self detectVeriticalMatches];
+    
+    [self removeTomCandy:horizontalTomChain];
+    [self removeTomCandy:veriticalTomChain];
+    
+    return [horizontalTomChain setByAddingObjectsFromSet:veriticalTomChain];
+}
+
+- (void)removeTomCandy:(NSSet *)tomChains
+{
+    for (TomChain *chain in tomChains) {
+        
+        for (TomCandy *tomCandy in chain.tomCandys) {
+            
+            _tom[tomCandy.column][tomCandy.row] = nil;
+        }
+    }
+}
+
 @end

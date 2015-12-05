@@ -48,6 +48,7 @@
             [self.tomScene animateTomSwap:tomSwap completion:^{
                 
                 self.view.userInteractionEnabled = YES;
+                [self handleTomChainMatches];
             }];
         }
         else
@@ -82,6 +83,16 @@
 - (void)beginGame
 {
     [self shuffle];
+}
+
+- (void)handleTomChainMatches
+{
+    NSSet *chains = [self.level removeMatches];
+    
+    [self.tomScene animateMatchedTomCandy:chains completion:^{
+       
+        self.view.userInteractionEnabled = YES;
+    }];
 }
 
 - (BOOL)shouldAutorotate
