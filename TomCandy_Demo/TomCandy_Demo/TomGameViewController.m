@@ -34,7 +34,7 @@
     
     // Load the Tom level
 //    self.level = [[TomLevel alloc] init];
-    self.level = [[TomLevel alloc] initWithFile:@"Level_1"];
+    self.level = [[TomLevel alloc] initWithFile:@"Level_0"];
     self.tomScene.level = self.level;
     
     [self.tomScene addTiles];
@@ -88,7 +88,12 @@
 - (void)handleTomChainMatches
 {
     NSSet *chains = [self.level removeMatches];
-    
+    if ([chains count] == 0) {
+        
+        [self beginNextTurn];
+        return;
+        
+    }
     [self.tomScene animateMatchedTomCandy:chains completion:^{
        
         NSArray *columns = [self.level fillHoles];
@@ -104,6 +109,12 @@
         }];
         
     }];
+}
+
+- (void)beginNextTurn
+{
+    [self.level detectPossibleTomSwaps];
+    self.view.userInteractionEnabled = YES;
 }
 
 - (BOOL)shouldAutorotate

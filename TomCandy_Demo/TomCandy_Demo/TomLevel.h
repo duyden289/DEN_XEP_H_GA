@@ -39,4 +39,6 @@ static const NSInteger NumRows = 9;
  *  @return a array set has remove
  */
 - (NSSet *)removeMatches;
+
+- (void)detectPossibleTomSwaps;
 @end
