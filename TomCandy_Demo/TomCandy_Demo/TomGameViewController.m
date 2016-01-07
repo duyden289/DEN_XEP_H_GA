@@ -16,6 +16,14 @@
 @property (nonatomic, strong) TomScene *tomScene;
 @property (nonatomic, strong) TomLevel *level;
 
+@property (nonatomic, assign) NSUInteger movesLeft;
+@property (nonatomic, assign) NSUInteger score;
+
+@property (weak, nonatomic) IBOutlet UILabel *targetLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *movesLabel;
+@property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
+
 @end
 
 @implementation TomGameViewController
